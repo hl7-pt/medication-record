@@ -11,7 +11,7 @@ id: my-ig
 canonical: http://example.com/fhir/example
 url: http://example.com/fhir/example
 name: ExampleIG
-title: "HL7 FHIR Implementation Guide: Example IG Release 1 - US Realm | STU1"
+title: "HL7 PT FHIR Implementation Guide: Example IG Release 1 | STU1"
 description: Example IG exercises many of the fields in a SUSHI configuration.
 status: active
 license: CC0-1.0
@@ -22,6 +22,9 @@ version: 1.0.0
 # it can be a single item OR and array here (but so far SUSHI only
 # supports 4.0.1 anyway).
 fhirVersion: 4.0.1
+parameters:
+  # show-inherited-invariants: false
+  produce-jekyll-data: true
 
 # The following two lines correspond to items that used to be in
 # ig.ini but were moved to IG.definition.parameter. For
@@ -29,7 +32,7 @@ fhirVersion: 4.0.1
 # camelcase, but if authors use the formal parameter names, SUSHI
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
-copyrightYear: 2021+
+copyrightYear: 2024+
 releaseLabel: STU1
 
 # The publisher can be a single item or a list, each with a name and
@@ -37,16 +40,16 @@ releaseLabel: STU1
 # as IG.publisher.  The contact details and/or additional publishers
 # will be translated into IG.contact values.
 publisher:
-  name: My Organization 
-  url: http://example.com/committees
-  email: my-group@example.com
+  name: HL7 Portugal 
+  url: http://hl7.pt
+  email: info@hl7.pt
 
 # ContactDetail is required by the template.
 contact:
-  - name: Bob Smith
+  - name: HL7 Portugal
     telecom:
       - system: email
-        value: bobsmith@example.com
+        value: geral@hl7.pt
         use: work
 
 # The jurisdiction can be a single item or a list. The FHIR Shorthand
@@ -158,15 +161,25 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 # currently only supports one level deep on sub-menus.
 # To provide a custom menu.xml file, do not include this property and
 # include a `menu.xml` file in input/includes.
-#menu:
-#  Home: index.html
-#  Artifacts:
-#    Profiles: artifacts.html#2
-#    Extensions: artifacts.html#3
-#    Value Sets: artifacts.html#4
-#  Downloads: downloads.html
-#  History: http://hl7.org/fhir/us/example/history.html
 
+pages:
+  index.md:
+    title: Home Page   
+  background.md:
+    title: Background
+  spec.md:
+    title: Specification
+  downloads.html:
+    title: Downloads
+  changes.html:
+    title: IG Change History
+		
+menu:
+  IG Home: index.html
+  Background: background.html
+  Specification: spec.html
+  Artifact Index: artifacts.html			
+  Downloads: downloads.html
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
 # resource), the code is the YAML key. If a parameter allows repeating
